@@ -37,14 +37,12 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Welcome Page</title>
 </head>
 <body>
-    <h1>Welcome, ${firstname} ${lasttname}!</h1>
-    <p>Thank you for registering!</p>
+    <h1>Welcome, <span th:text="${firstname}"></span> <span th:text="${lasttname}"></span>!</h1>
 </body>
 </html>
+
