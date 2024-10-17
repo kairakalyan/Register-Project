@@ -1,0 +1,19 @@
+Complete SQL Queries
+
+-- Step 1: Create the database
+CREATE DATABASE registration_db;
+
+-- Step 2: Use the newly created database
+USE registration_db;
+
+-- Step 3: Create the users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,       -- Unique ID for each user
+    fname VARCHAR(50) NOT NULL,              -- First Name
+    lname VARCHAR(50) NOT NULL,              -- Last Name
+    email VARCHAR(100) NOT NULL UNIQUE,      -- Email (must be unique)
+    passwd VARCHAR(100) NOT NULL,            -- Password
+    dob DATE NOT NULL,                       -- Date of Birth
+    gender ENUM('Male', 'Female') NOT NULL   -- Gender (limited to Male or Female)
+);
+

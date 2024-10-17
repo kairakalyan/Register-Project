@@ -1,0 +1,40 @@
+package com.example.registration.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import com.example.registration.model.User;
+import com.example.registration.repository.UserRepository;
+
+@Controller
+public class IndexController {
+
+    private final UserRepository userRepository;
+
+    // Constructor for dependency injection
+    public IndexController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "index"; // Returns the registration form
+    }
+
+    @PostMapping("/register")
+    public String userRegistration(@ModelAttribute User user, Model model) {
+        // Save the user to the database
+        userRepository.save(user);
+
+        // Add user attributes to the model to display on the welcome page
+        model.addAttribute("firstname", user.getFname());
+        model.addAttribute("lasttname", user.getLname());
+        
+        // Print for debugging
+        System.out.println("User saved: " + user);
+        
+        return "welcome"; // Returns the welcome.html view
+    }
+}
